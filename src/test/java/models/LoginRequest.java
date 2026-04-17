@@ -1,4 +1,4 @@
-package models;
+/*package models;
 
 public class LoginRequest {
     public String username;
@@ -13,4 +13,4 @@ public class LoginRequest {
     // Getters (and optionally setters)
     public String getUsername() { return username; }
     public String getPassword() { return password; }
-}
+}*/

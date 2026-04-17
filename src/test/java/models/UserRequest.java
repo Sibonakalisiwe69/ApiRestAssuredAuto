@@ -1,16 +1,16 @@
 package models;
 
 public class UserRequest {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private String confirmPassword;
-    private String groupId;
+    public String firstName; // class attributes
+    public String lastName;
+    public String email;
+    public String password;
+    public String confirmPassword;
+    public String groupId;
 
     // Constructor
     public UserRequest(String firstName, String lastName, String email, String password, String confirmPassword, String groupId) {
-        this.firstName = firstName;
+        this.firstName = firstName;//
         this.lastName = lastName;
         this.email = email;
         this.password = password;

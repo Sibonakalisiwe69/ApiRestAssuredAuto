@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="API Rest Assured Test Suite" parallel="false" thread-count="1">
+    <test name="User API Tests">
+        <classes>
+            <class name="tests.UserTest"/>
+        </classes>
+    </test>
+</suite>
+

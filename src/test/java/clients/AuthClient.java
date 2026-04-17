@@ -1,5 +1,5 @@
 package clients;
-import io.restassured.RestAssured;
+import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
 import utils.ConfigManager;
 
@@ -10,7 +10,7 @@ public class AuthClient {
         String loginPath = ConfigManager.get("login.path");
         String loginUrl = baseUrl + loginPath;
 
-        return RestAssured.given()
+        return given()
                 .contentType("application/json")
                 .body("{\"email\":\"" + email + "\", \"password\":\"" + password + "\"}")
                 .post(loginUrl);

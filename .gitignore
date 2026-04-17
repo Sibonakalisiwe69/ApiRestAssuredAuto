@@ -40,5 +40,7 @@ build/
 .idea/
 
 # Allure test results and reports
+.allure/
 allure-results/
 allure-report/
+ALLURE_REPORT_FIX.md/

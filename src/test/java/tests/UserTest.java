@@ -8,21 +8,26 @@ import models.UserRequest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.ConfigManager;
+
+import java.util.UUID;
+
 public class UserTest extends BaseTest {
 
-    AuthClient authClient = new AuthClient();
+    AuthClient authClient = new AuthClient(); //creating an instance of a class
     UserClient userClient = new UserClient();
 
-    String adminToken; // variable declaration
+    String adminToken; // variable declaration adminToken of type String
     String userId;
 
-    // Generate unique email per test run
-    String email = "luhh" + System.currentTimeMillis() + "@example.com";
-    String password = "SecurePass123!";
+    //declaring and initializing a string variable
+    /*String email = "luh" + System.currentTimeMillis() + "@example.com"; // Generate unique email per test run*/
+    String email = "user_" + UUID.randomUUID() + "@example.com";// Generate unique email using UUID for better uniqueness per test run
+    String password = ConfigManager.get("default.user.password"); // Read the default user password from the configuration file
 
-    @Test(priority = 1)
-    @Description("Create new user (register)")
-    public void createUser() {
+    @Test(priority = 1) // Set priority to ensure this runs first
+    @Description("Create new user (register)")//Description for Allure report
+    public void registerUser() {
+        //creating an instance of a class
         UserRequest req = new UserRequest(
                 "Luh",
                 "Mhayise",
@@ -32,7 +37,7 @@ public class UserTest extends BaseTest {
                 "1deae17a-c67a-4bb0-bdeb-df0fc9e2e526"
         );
 
-        Response res = userClient.createUser(adminToken, req);//Create user using the UserClient and the generated email and password
+        Response res = userClient.registerUser(adminToken, req);//Create user using the UserClient and the generated email and password
 
         // Debug print
         System.out.println("Create User Response: " + res.asString());//
@@ -98,6 +103,7 @@ public class UserTest extends BaseTest {
     @Description("Delete newly created user")
     public void deleteUser() {
         Response res = userClient.deleteUser(adminToken, userId);
+        System.out.println("Response: " + res.asString());
         Assert.assertEquals(res.statusCode(), 200);
     }
 }

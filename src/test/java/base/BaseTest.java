@@ -8,6 +8,6 @@ public class BaseTest {
 
     @BeforeClass
     public void setup() {
-        RestAssured.baseURI = ConfigManager.get("base.url");
+        RestAssured.baseURI = ConfigManager.get("base.url"); //Reads the value of the url from configuration file
     }
 }

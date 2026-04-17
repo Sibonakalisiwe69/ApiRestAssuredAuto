@@ -1,12 +1,11 @@
 package clients;
-
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 import utils.ConfigManager;
 
 public class UserClient {
 
-    public Response createUser(String token, Object body) {
+    public Response registerUser(String token, Object body) {
         String url = ConfigManager.get("base.url") + ConfigManager.get("create.user.path");
         return given()
                 .header("Authorization", "Bearer " + token)
